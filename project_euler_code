@@ -4,6 +4,7 @@
 Functions contained:
 euler_prob1
 euler_prob2
+euler_prob3
 
 '''
 
@@ -54,5 +55,31 @@ def euler_prob2(div,upper):
     
     return total
     
+
+
+def euler_prob3(num):
+    '''
+    returns the largest prime factor of num (int)
     
+    Application for euler project: 
+    The prime factors of 13195 are 5, 7, 13 and 29.
+
+    What is the largest prime factor of the number 600851475143 ?
+    '''
     
+    prime_factors = [] #list to keep prime factors in
+    largest_prime_factor = 0 #largest prime factor will be returned
+    x = 1
+    
+    while x <= num/2:
+        if num % x != 0: #If x is not a factor of num, incrememnt x 
+            x += 1
+            
+        else: #otherwise test for primeness of x
+            
+            for y in range(x):
+                if x % y == 0: # if not prime, increment x and break loop
+                    
+                    
+            
+            x += 1
