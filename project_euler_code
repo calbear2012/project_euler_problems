@@ -2,11 +2,13 @@
 
 '''
 Functions contained:
-euler_prob1
-euler_prob2
+euler_prob1 (sum of ints multiple of 3, 5)
+euler_prob2 (sum of even fib nums)
+euler_prob3 (largest prime factor)
+
 
 '''
-
+import math
 
 def euler_prob1(mult1, mult2, num):
     
@@ -54,5 +56,60 @@ def euler_prob2(div,upper):
     
     return total
     
+
+
+def euler_prob3(num):
+    '''
+    returns the largest prime factor of num (int)
     
+    Application for euler project: 
+    The prime factors of 13195 are 5, 7, 13 and 29.
+
+    What is the largest prime factor of the number 600851475143 ?
+    '''
+    possible_factors = [] #list of factors that are under the sqrt of num 
+    prime_factors = [] #list to keep prime factors in
+    largest_prime_factor = 0 #largest prime factor will be returned
+    x = 1
     
+    #function to check to see if a factor is prime
+    def isprime(fact):
+        
+        if fact == 2 or fact == 3:
+            return True
+            
+        if fact < 2 or fact % 2 == 0:
+            return False
+            
+        if fact < 9:
+            return True
+            
+        if fact % 3 == 0:
+            return False
+            
+        r = int(fact**0.5)
+        f = 5
+        
+        while f <= r:
+            if fact % f == 0:
+                return False
+            if fact % (f+2) == 0:
+                return False
+            f += 6
+        return True            
+
+    
+    while x <= int(math.sqrt(num)):
+        if num % x == 0:
+            possible_factors.append(x)
+            x += 1
+        
+        else:
+            x += 1
+            
+    for z in range(len(possible_factors)):
+        if isprime(possible_factors[z]) == True:
+            prime_factors.append(possible_factors[z])
+            largest_prime_factor = possible_factors[z]
+                
+    return possible_factors, prime_factors, largest_prime_factor
