@@ -114,3 +114,74 @@ def euler_prob3(num):
             largest_prime_factor = possible_factors[z]
                 
     return possible_factors, prime_factors, largest_prime_factor
+    
+    
+def euler_prob4(digits):
+    '''
+    finds the largest palindromic product of two numbers
+    of (digits) numbers of digits (eg, 2 digits 10 - 99)
+    
+    Application for Project Euler - 
+    A palindromic number reads the same both ways. The largest palindrome made 
+    from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+    Find the largest palindrome made from the product of two 3-digit numbers.
+    
+    '''
+    
+    '''
+    functions contained with function (meta!)
+    upper_funct
+    is_palindrome
+    
+    
+    '''
+    
+    #create the upper marker that is one above the largest number
+    #that will be reached from that number of digits
+    #ex 1 digit will return upper of 10, where 9 is the largest 1 digit number
+    #ex 3 will return upper of 1000, 999 largest
+    def upper_funct(input_digits):
+        upper_in_funct = 1
+        dig = input_digits
+        
+        while dig > 0:
+            upper_in_funct = upper_in_funct * 10
+            dig  -= 1
+        
+            
+        return upper_in_funct
+        
+    
+    
+    #Function to check if each product is can be a palindrome
+    def is_palindrome(num):
+        num_list = []
+        while num > 0:
+            num_list.append(num%10)
+            num = num / 10
+            
+        for x in range(len(num_list)):
+            if num_list[x] != num_list[(-x - 1)]:
+                return False
+        return True
+        
+    
+    upper = upper_funct(digits)
+    lower = upper / 10
+    pal_list = []
+
+    
+    a = lower
+    
+    while a < upper:
+        
+        for x in range(lower, upper):
+            if is_palindrome(x*a) is True:
+                pal_list.append(x*a)
+                
+        a += 1
+        
+    pal_list.sort()
+    
+    return pal_list[-1]
