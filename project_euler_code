@@ -6,7 +6,8 @@ euler_prob1 (sum of ints multiple of 3, 5)
 euler_prob2 (sum of even fib nums)
 euler_prob3 (largest prime factor)
 euler_prob4 (largest palindrome product)
-
+euler_prob5 (smallest multiple)
+euler_prob6 (sum of sqr - sqr of sum)
 
 '''
 import math
