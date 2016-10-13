@@ -12,6 +12,36 @@ euler_prob6 (sum of sqr - sqr of sum)
 '''
 import math
 
+#supporting 
+
+    #function to check to see if a number is prime
+def isprime(num):
+    
+    if num == 2 or num == 3:
+        return True
+        
+    if num < 2 or num % 2 == 0:
+        return False
+        
+    if num < 9:
+        return True
+        
+    if num % 3 == 0:
+        return False
+        
+    r = int(num**0.5)
+    f = 5
+    
+    while f <= r:
+        if num % f == 0:
+            return False
+        if num % (f+2) == 0:
+            return False
+        f += 6
+    return True      
+
+
+
 def euler_prob1(mult1, mult2, num):
     
     '''
@@ -72,33 +102,7 @@ def euler_prob3(num):
     possible_factors = [] #list of factors that are under the sqrt of num 
     prime_factors = [] #list to keep prime factors in
     largest_prime_factor = 0 #largest prime factor will be returned
-    x = 1
-    
-    #function to check to see if a factor is prime
-    def isprime(fact):
-        
-        if fact == 2 or fact == 3:
-            return True
-            
-        if fact < 2 or fact % 2 == 0:
-            return False
-            
-        if fact < 9:
-            return True
-            
-        if fact % 3 == 0:
-            return False
-            
-        r = int(fact**0.5)
-        f = 5
-        
-        while f <= r:
-            if fact % f == 0:
-                return False
-            if fact % (f+2) == 0:
-                return False
-            f += 6
-        return True            
+    x = 1      
 
     
     while x <= int(math.sqrt(num)):
